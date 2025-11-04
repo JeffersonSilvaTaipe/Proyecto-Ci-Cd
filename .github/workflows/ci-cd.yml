@@ -3,8 +3,6 @@ name: CI/CD Simple
 on:
     push:
         branches: [ main ]
-
-
 jobs:
     build:
         runs-on: ubuntu-latest
@@ -19,7 +17,10 @@ jobs:
 
         - name: Instalar dependencias
           run: npm install
-
+          
+        - name: Permiso node
+          run: chmod +x ./node_modules/.bin/jest
+          
         - name: Ejecutar pruebas
           run: npm test
 deploy:
